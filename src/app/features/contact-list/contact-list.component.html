@@ -1,0 +1,21 @@
+<section class="contacts">
+  <header class="header flex flex-between">
+    <p class="title">Contact</p>
+    @if (contacts) {
+      <app-search [contacts]="contacts" (filteredContact)="handleSelectedContact($event)"></app-search>
+    }
+  </header>
+  <main class="contact-list-wrapper">
+    @if (contacts) {
+      <ul class="contact-list">
+        @for (contact of contacts; track $index) {
+          <li><app-contact-card [contact]="contact" (selectContact)="openContactDialog($event)"></app-contact-card></li>
+        }
+      </ul>
+    }
+  </main>
+
+  <button class="create-contact" (click)="createContact()">
+    <span class="material-symbols-outlined"> person_add </span>
+  </button>
+</section>

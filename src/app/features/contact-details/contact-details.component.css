@@ -1,0 +1,79 @@
+.contact-details {
+    padding: var(--base-padding);
+    display: flex;
+    flex-direction: column;
+    background: var(--card-background);
+    gap: 32px;
+    cursor: default;
+    min-width: 320px;
+    position: relative;
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .icon {
+        color: var(--primary-color);
+    }
+
+    .field-group {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .contact-info-field {
+        width: 100%;
+        display: flex;
+        gap: 16px;
+
+        .content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+    }
+
+    .contact-info-field.name {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .contact-info-field.address {
+        align-items: center;
+    }
+
+    .contact-details-actions {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+}
+
+.editable-field {
+    width: 100%;
+    /* border: none; */
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.editable-field[readonly] {
+    background: transparent;
+    border: none;
+    cursor: default;
+}
+
+:host-context(.edit-mode) .editable-field:not([readonly]) {
+    background: var(--background-color);
+    font-size: 16px;
+    cursor: text;
+    padding: 8px;
+}

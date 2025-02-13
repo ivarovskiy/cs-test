@@ -1,0 +1,54 @@
+.fab-button {
+    color: var(--fab-button-icon);
+}
+
+.fab-button.selected {
+    color: var(--fab-button-selected-icon);
+}
+
+.fab-button>.favorite {
+    color: var(--favorite-color);
+}
+
+.buttons-group {
+    display: flex;
+    gap: 8px;
+    color: var(--fab-button-icon)
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    color: white;
+}
+
+.btn.save {
+    background-color: var(--save-color-background);
+}
+
+.btn.delete {
+    background-color: var(--delete-color-background);
+}
+
+.btn.edit {
+    background-color: var(--edit-color-background);
+}
+
+.btn.cancel {
+    background-color: var(--edit-color-background);
+}
+
+.btn.create {
+    background-color: var(--save-color-background);
+}
+
+.btn:hover {
+    opacity: 0.8;
+}

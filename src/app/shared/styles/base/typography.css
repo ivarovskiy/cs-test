@@ -1,0 +1,48 @@
+:root {
+    --font-family-base: Inter, serif;
+    --font-size-base: 16px;
+    --line-height-base: 1;
+
+    --header-font-size: 24px;
+    --title-font-size: 20px;
+    --details-text-primary: 18px;
+    --details-text-secondary: 14px;
+  }
+  
+  
+html, body {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+}
+
+.primary-text {
+  color: var(--text-primary);
+  font-size: var(--title-font-size);
+}
+
+.secondary-text {
+  color: var(--text-secondary);
+  font-size: var(--font-size-base);
+}
+
+.details-text-primary {
+  color: var(--text-primary);
+  font-size: var(--details-text-primary);
+}
+
+.details-text-secondary {
+  color: var(--text-secondary);
+  font-size: var(--details-text-secondary);
+}
+
+.error {
+  width: 100%;
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.form-error {
+  border: 1px solid red;
+}

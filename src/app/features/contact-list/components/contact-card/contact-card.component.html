@@ -1,0 +1,33 @@
+<article class="card">
+  <div class="content">
+    <div class="avatar-wrapper">
+      @if (contact.imageUrl) {
+        <div
+          class="avatar-container"
+          [ngStyle]="{
+            backgroundImage: getAvatar(contact),
+          }"
+        ></div>
+      } @else {
+        <div class="avatar-container avatar-placeholder"></div>
+      }
+    </div>
+
+    <div class="content-name">
+      <p class="primary-text">{{ contact.firstName }} {{ contact.lastName }}</p>
+      <p class="secondary-text">{{ contact.phone }}</p>
+    </div>
+  </div>
+
+  <div class="buttons-group">
+    @if (contact.source === 'localStorage') {
+      <span class="material-symbols-outlined" matTooltip="Data downloaded from local storage"> folder </span>
+    } @else {
+      <span class="material-symbols-outlined" matTooltip="Data downloaded from server"> cloud_sync </span>
+    }
+
+    <button matTooltip="More" (click)="selectContact.emit(contact.id!)">
+      <span class="material-symbols-outlined"> more_vert </span>
+    </button>
+  </div>
+</article>

@@ -1,0 +1,29 @@
+.mat-mdc-menu-content {
+  background-color: var(--background-color);
+}
+
+.mat-mdc-menu-item-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: var(--mat-menu-text-color);
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+  background-color: var(--background-color);
+
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: var(--background-color);
+  }
+}
+
+div.mat-mdc-autocomplete-panel {
+  background-color: var(--background-color) !important;
+
+}
+
+.mat-mdc-option .mdc-list-item__primary-text {
+  font-family: var(--font-family-base) !important;
+}

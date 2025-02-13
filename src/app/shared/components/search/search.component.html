@@ -1,0 +1,20 @@
+<div class="search">
+  <button (click)="toggleSearch()" [class.show]="showSearch">
+    <span class="material-symbols-outlined"> search </span>
+  </button>
+
+  <form class="search-form" [class.show]="showSearch">
+    <input
+      type="text"
+      placeholder="Search for a contact"
+      [formControl]="control"
+      [matAutocomplete]="auto"
+      class="secondary-text"
+    />
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onContactSelected($event)" [displayWith]="displayFn">
+      @for (contact of filteredContacts | async; track $index) {
+        <mat-option [value]="contact">{{ contact.firstName }} {{ contact.lastName }}</mat-option>
+      }
+    </mat-autocomplete>
+  </form>
+</div>

@@ -1,0 +1,163 @@
+<section class="contact-details">
+  <nav class="buttons-group flex flex-end">
+    <button class="fab-button" (click)="toggleFavorite()">
+      @if (isFavorite) {
+        <span class="material-symbols-outlined favorite"> stars </span>
+      } @else {
+        <span class="material-symbols-outlined"> star </span>
+      }
+    </button>
+
+    <button class="fab-button" (click)="closeDialog()">
+      <span class="material-symbols-outlined"> more_vert </span>
+    </button>
+  </nav>
+  <form [formGroup]="contactForm" class="form">
+    <div class="avatar-wrapper">
+      @if (contact!.imageUrl !== null) {
+        <div
+          class="dialog-avatar-container"
+          [ngStyle]="{
+            backgroundImage: getAvatar(contact!),
+          }"
+        ></div>
+      } @else {
+        <div class="avatar-container avatar-placeholder"></div>
+      }
+    </div>
+
+    <div class="contact-info-field name">
+      @if (isEditMode) {
+        <div class="contact-info-field">
+          <label for="firstName">Name</label>
+          <div class="content">
+            <input
+              class="primary-text editable-field"
+              formControlName="firstName"
+              id="firstName"
+              [class.form-error]="
+                contactForm.get('firstName')?.touched && contactForm.get('firstName')?.errors?.['required']
+              "
+            />
+            <input class="primary-text editable-field" formControlName="lastName" />
+          </div>
+        </div>
+        <p
+          class="error"
+          *ngIf="contactForm.get('firstName')?.touched && contactForm.get('firstName')?.errors?.['required']"
+        >
+          Name is required.
+        </p>
+
+        <div class="contact-info-field address">
+          <label for="address">Adress</label>
+          <span class="material-symbols-outlined icon"> pin_drop </span>
+          <input class="secondary-text editable-field" formControlName="address" id="address" />
+        </div>
+      } @else {
+        <p class="primary-text">{{ contact!.firstName }} {{ contact!.lastName }}</p>
+
+        <div class="contact-info-field address">
+          <span class="material-symbols-outlined icon"> pin_drop </span>
+          <a
+            class="secondary-text"
+            [href]="'https://www.google.com/maps?q=' + contact!.address"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ contact!.address }}
+          </a>
+        </div>
+      }
+    </div>
+    <div class="field-group">
+      <div class="contact-info-field">
+        <span class="material-symbols-outlined icon"> remember_me </span>
+        <div class="content">
+          <label class="details-text-primary" for="phone">Phone</label>
+          <input
+            class="details-text-secondary editable-field"
+            formControlName="phone"
+            [readOnly]="!isEditMode"
+            id="phone"
+            [class.form-error]="contactForm.get('phone')?.touched && contactForm.get('phone')?.errors?.['required']"
+            [class.form-error]="contactForm.get('phone')?.touched && contactForm.get('phone')?.errors?.['pattern']"
+          />
+        </div>
+      </div>
+      <p class="error" *ngIf="contactForm.get('phone')?.touched && contactForm.get('phone')?.errors?.['required']">
+        Phone is required.
+      </p>
+      <p class="error" *ngIf="contactForm.get('phone')?.touched && contactForm.get('phone')?.errors?.['pattern']">
+        Invalid phone number format.
+      </p>
+
+      <div class="contact-info-field">
+        <span class="material-symbols-outlined icon"> mail </span>
+        <div class="content">
+          <label class="details-text-primary" for="email">Email</label>
+          <input
+            class="details-text-secondary editable-field"
+            formControlName="email"
+            [readOnly]="!isEditMode"
+            id="email"
+            [class.form-error]="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['required']"
+            [class.form-error]="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['email']"
+          />
+        </div>
+      </div>
+      <p class="error" *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['required']">
+        Email is required.
+      </p>
+      <p class="error" *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['email']">
+        Enter a valid email.
+      </p>
+
+      <div class="contact-info-field">
+        <span class="material-symbols-outlined icon"> celebration </span>
+
+        @if (!isEditMode) {
+          <div class="content">
+            <p class="details-text-primary">Birthday</p>
+            <p class="details-text-secondary">{{ contact!.birthDate }}</p>
+          </div>
+        } @else {
+          <div class="content">
+            <label class="details-text-primary" for="birthDate">Birthday</label>
+            <mat-form-field class="example-form-field">
+              <mat-label>Choose a date</mat-label>
+              <input matInput [matDatepicker]="datepicker" formControlName="birthDate" id="birthDate" />
+              <mat-hint>DD/MM/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+              <mat-datepicker #datepicker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="contact-details-actions">
+      @if (contact!.id) {
+        @if (!isEditMode) {
+          <button class="btn edit" (click)="editContact()">
+            <span class="material-symbols-outlined">edit</span> Edit
+          </button>
+        } @else {
+          <button class="btn save" (click)="saveContact()">
+            <span class="material-symbols-outlined">save</span> Save
+          </button>
+          <button class="btn cancel" (click)="cancelEdit()">
+            <span class="material-symbols-outlined">cancel</span> Cancel
+          </button>
+        }
+        <button class="btn delete" (click)="deleteContact()">
+          <span class="material-symbols-outlined">delete</span> Delete
+        </button>
+      } @else {
+        <button class="btn create" (click)="createContact()">
+          <span class="material-symbols-outlined"> add </span> Create
+        </button>
+      }
+    </div>
+  </form>
+</section>

@@ -1,0 +1,28 @@
+:root {
+    --primary-color: #81a3ea;
+    --secondary-color: white;
+    --background-color: #f7f7f7;
+    --card-background: white;
+    --text-primary: #0a0a0a;
+    --text-secondary: #737070;
+    --icon-color: #4A90E2;
+    --border-color: #2A2A2A;
+    --mat-menu-text-color: #2d2d2d;
+
+    --edit-color-background: #81a3ea;
+    --delete-color-background: #000bfd;
+    --save-color-background: #81a3ea;
+    --favorite-color: red;
+
+    --header-bg: var(--background-color);
+    --contact-item-bg: var(--card-background);
+    --contact-item-text: var(--text-primary);
+    --contact-item-subtext: var(--text-secondary);
+    --fab-button-bg: var(--primary-color);
+    --fab-button-icon: #d4d9d9fc;
+    --fab-button-selected-icon: #81a3ea;
+
+    --hover-color: rgba(255, 255, 255, 0.1);
+    --active-color: rgba(255, 255, 255, 0.2);
+    --shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+}

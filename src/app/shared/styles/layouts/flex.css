@@ -1,0 +1,13 @@
+.flex {
+    display: flex;
+}
+
+.flex-end {
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.flex-between {
+    justify-content: space-between;
+    align-items: center;
+}

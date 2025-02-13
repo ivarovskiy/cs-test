@@ -1,0 +1,23 @@
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+    height: var(--contact-card-height);
+    background-color: var(--card-background);
+    border-radius: var(--contact-card-border-radius);
+    padding: var(--base-padding);
+
+    .content {
+        display: flex;
+        gap: 16px;
+
+        .content-name {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 8px;
+        }
+    }
+}
